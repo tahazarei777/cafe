@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ورود</title>
+</head>
+<body>
+    <h2>ورود</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            اطلاعات وارد شده صحیح نیست!
+        </div>
+        {% endif %}
+        {{ form.username }}
+        <label for="id_password">password</label>
+        {{form.password}}
+        
+        
+        <button type="submit">ورود</button>
+        
+    </form>
+    <p>حساب ندارید؟ <a href="{% url 'signup' %}">ثبت‌نام کنید</a></p>
+</body>
+</html>

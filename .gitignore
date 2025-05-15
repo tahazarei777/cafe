@@ -1,0 +1,19 @@
+# محیط مجازی پایتون
+venv/
+myenv/
+env/
+
+# فایلهای پایگاهداده
+*.sqlite3
+
+# فایلهای حساس
+.env
+*.pyc
+__pycache__/
+
+# فایلهای IDE
+.vscode/
+.idea/
+
+# استاتیک فایلها (در Production با collectstatic ساخته میشوند)
+staticfiles/

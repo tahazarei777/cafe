@@ -1,0 +1,11 @@
+password of admin is :admin/admin
+
+HTML_OF login=FALSE
+HTML_OF signin=FALSE
+HTML_OF cart=FALSE
+HTML_OF dashboard=FALSE
+
+
+// 2 app & 1 projet folder
+//static : ,js ,css ,font,picture
+//template : base,index,products login , signin 
