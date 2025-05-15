@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const rightProductArrow = document.querySelector(".fa-caret-right");
   const productCardsElem = document.querySelector(".product-cards");
   const cardElem = document.querySelector(".product-card");
+  
   const bannerElem = document.querySelector(".banner");
   const bannerIMG1 = document.getElementById("banner-img-1");
   const bannerIMG2 = document.getElementById("banner-img-2");
@@ -54,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   });
               }, 500);
           }
-      }, 5000);
+      }, 4000);
   }
 
   // ------------ اسکرول کارت‌های محصول (بهینه‌شده) ------------
