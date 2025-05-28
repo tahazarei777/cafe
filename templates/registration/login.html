@@ -1,27 +1,25 @@
 
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html lang="en">
 <head>
-    <title>ورود</title>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" href="{% static 'css-register/register-login/login_res.css' %}">
+    <link rel="stylesheet" href="{% static 'css-register/register-login/login_style.css' %}">
 </head>
 <body>
-    <h2>ورود</h2>
-    <form method="post">
+<div id="main_wrapper">
+    
+    <form action="#" method="post">
         {% csrf_token %}
-        
-        {% if form.errors %}
-        <div class="alert alert-danger">
-            اطلاعات وارد شده صحیح نیست!
-        </div>
-        {% endif %}
-        {{ form.username }}
-        <label for="id_password">password</label>
+        <label for="user_name">نام و نام خانوادگی</label>
+        {{form.username}}
+        <label for="user_pass">رمز عبور</label>
         {{form.password}}
-        
-        
-        <button type="submit">ورود</button>
-        
+        <button type="submit" class="btn" >ورود به حساب</button>
+        <span>حساب کاربری نداری! <a href="{% url 'signup' %}">ثبت نام</a> کن</span>
     </form>
-    <p>حساب ندارید؟ <a href="{% url 'signup' %}">ثبت‌نام کنید</a></p>
+</div>
 </body>
 </html>

@@ -8,8 +8,15 @@ def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
+            def save(self, commit=True):
+                user = super().save(commit=False)
+                user.set_password(self.cleaned_data["password1"])
+                if commit:
+                    user.save()
+                return user
             user = form.save()
-            login(request, user)  # کاربر را لاگین کن
+            login(request, user) 
+            messages.success(request, 'ثبت نام شما با موفقیت انجام شد!') # کاربر را لاگین کن
             return redirect('home')  # به صفحه اصلی برو
     else:
         form = SignUpForm()
@@ -21,6 +28,7 @@ def user_login(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
+             
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
@@ -38,3 +46,4 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('home')  # یا هر صفحه‌ای که می‌خواهید
+    

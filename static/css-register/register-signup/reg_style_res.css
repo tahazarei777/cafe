@@ -1,0 +1,19 @@
+@media screen and (max-width: 1100px){
+    #main_wrapper{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 700px){
+    #main_wrapper{
+        width: 70%;
+    }
+    form{
+        padding: 60px 0;
+    }
+    button,label{
+        font-size: 18px;
+    }
+    input{
+        font-size: 16px;
+    }
+}

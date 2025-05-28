@@ -1,6 +1,7 @@
 
 from pathlib import Path
 import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'cafe_app1',
     'accounts',
+    'axes',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'  # اضافه کنید
@@ -41,6 +43,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',
 ]
 
 ROOT_URLCONF = 'cafe_base.urls'
@@ -83,6 +86,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -96,14 +102,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa-ir'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
-
+USE_L10N=True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
@@ -120,3 +126,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/admin/'  
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',  # استفاده از نام جدید
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
+AXES_FAILURE_LIMIT = 3  # حداکثر ۳ تلاش ناموفق
+AXES_COOLOFF_TIME = 2  # مسدودیت به مدت ۲ دقیقه (مقدار عددی به ساعت)
+AXES_LOCK_OUT_AT_FAILURE = [['username']]  # فعال کردن قفل کردن
+AXES_LOCKOUT_TEMPLATE = 'lockout.html'  # صفحه نمایش پیام مسدودیت

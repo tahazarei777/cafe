@@ -1,16 +1,60 @@
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html lang="en">
 <head>
-    <title>ثبت‌نام</title>
+    <meta charset="UTF-8">
+    <title>saade_register</title>
+    <link rel="stylesheet" href="{% static 'css-register/register-signup/reg_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css-register/register-signup/reg_style_res.css' %}">
 </head>
 <body>
-    <h2>ثبت‌نام</h2>
-    <form method="post">
-        {% csrf_token %}
-        
-        {{ form.as_p }}
-        <button type="submit">ثبت‌نام</button>
-    </form>
-    <p>حساب دارید؟ <a href="{% url 'login' %}">وارد شوید</a></p>
+    <div id="main_wrapper">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form action="#" method="POST" novalidate>
+            {% csrf_token %}
+
+            <label for="user_name">نام و نام خانوادگی</label>
+            {{form.username}}
+            {% if form.username.errors %}
+                <div class="error">
+                    {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <label for="user_pass">رمز عبور</label>
+            {{form.password1}}
+            {% if form.password1.errors %}
+                <div class="error">
+                    {% for error in form.password1.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <label for="user_number">شماره تلفن</label>
+            {{form.phone}}
+            {% if form.phone.errors %}
+                <div class="error">
+                    {% for error in form.phone.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <button type="submit">ثبت‌نام</button> 
+        </form>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
