@@ -1,5 +1,0 @@
-SECRET_KEY='django-insecure-%y9_7+6l!81o20kqkvr5^%ig$t_vjl_iwz@6ajl27)_11jc#q9'
-EMAIL_PORT=587
-EMAIL_HOST ='sample'
-EMAIL_HOST_USER ='momad6955@gmail.com'
-EMAIL_HOST_PASSWORD='tahazarei@1387.com'
