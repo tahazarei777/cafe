@@ -165,7 +165,7 @@ h3 {
 
 @font-face {
   font-family: peyda;
-  src: url(../font/Peyda/Peyda-Thin.ttf);
+  src: url(../font/Peyda/Peyda-Thin.ttf) ;
 }
 
 @font-face {

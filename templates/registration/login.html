@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -11,13 +10,21 @@
 <body>
 <div id="main_wrapper">
     
-    <form action="#" method="post">
+    <form action="#" method="post" style="font-family: Simplified Arabic; font-weight: bold; font-size: larger " >
         {% csrf_token %}
         <label for="user_name">نام و نام خانوادگی</label>
         {{form.username}}
         <label for="user_pass">رمز عبور</label>
         {{form.password}}
         <button type="submit" class="btn" >ورود به حساب</button>
+
+        <a href="{% url 'password_reset' %}">آیا رمز خود را فراموش کرده اید؟</a>
+
+        {% comment %} <a href="{% url 'password_change_done' %}">password_change_done</a>
+        <a href="{% url 'password_reset' %}">password_reset</a>
+        <a href="{% url 'password_reset_done' %}">password_reset_done</a>
+        <a href="{% url 'password_reset_complete' %}">password_reset_confirm</a> {% endcomment %}
+
         <span>حساب کاربری نداری! <a href="{% url 'signup' %}">ثبت نام</a> کن</span>
     </form>
 </div>
