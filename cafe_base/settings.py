@@ -25,10 +25,10 @@ INSTALLED_APPS = [
 
 # Authentication
 AUTH_USER_MODEL = 'accounts.User'
-AUTHENTICATION_BACKENDS = [
-    'axes.backends.AxesBackend',
-    'django.contrib.auth.backends.ModelBackend',
-]
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     'axes.backends.AxesBackend',
+# ]
 
 # Middleware
 MIDDLEWARE = [
@@ -131,13 +131,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Defaults
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/admin/'
-EMAIL_BACKEND = 'django.core.mail.backends.stmp.EmailBackend'
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_USE_TLS = True
-EMAIL_PORT =config('EMAIL_PORT ')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-# Security (for production)
+
+# EMAIL_BACKEND ='django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_BACKEND = config('EMAIL_BACKEND')
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_USE_TLS = config('EMAIL_USE_TLS',cast=bool)
+# EMAIL_PORT =config('EMAIL_PORT' , cast=int)
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
 if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
