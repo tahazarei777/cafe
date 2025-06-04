@@ -26,8 +26,9 @@ INSTALLED_APPS = [
 # Authentication
 AUTH_USER_MODEL = 'accounts.User'
 # AUTHENTICATION_BACKENDS = [
+#     'axes.backends.AxesStandaloneBackend ',
 #     'django.contrib.auth.backends.ModelBackend',
-#     'axes.backends.AxesBackend',
+    
 # ]
 
 # Middleware
@@ -104,9 +105,7 @@ CACHES = {
     }
 }
 
-# Axes (Brute Force Protection)
 AXES_CACHE = 'axes_cache'
-# AXES_HANDLER = 'axes.handlers.cache.AxesCacheHandler'
 AXES_FAILURE_LIMIT = 5
 AXES_COOLOFF_TIME = 1  # Hours
 AXES_LOCKOUT_PARAMETERS = [["ip_address", "user_agent", "username"]]
@@ -132,14 +131,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/admin/'
 
-# EMAIL_BACKEND ='django.core.mail.backends.console.EmailBackend'
-
-# EMAIL_BACKEND = config('EMAIL_BACKEND')
-# EMAIL_HOST = config('EMAIL_HOST')
-# EMAIL_USE_TLS = config('EMAIL_USE_TLS',cast=bool)
-# EMAIL_PORT =config('EMAIL_PORT' , cast=int)
-# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_USE_TLS = True
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
 if not DEBUG:

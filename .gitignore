@@ -8,7 +8,6 @@ env/
 
 # فایلهای حساس
 .env
-.env
 *.pyc
 __pycache__/
 
