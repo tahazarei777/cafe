@@ -7,11 +7,10 @@ from django.core.exceptions import ValidationError
 class CustomPasswordResetForm(PasswordResetForm):
     def clean_email(self):
         email = self.cleaned_data.get('email')
+        if not User.objects.filter(email=email).exists():  # بررسی وجود ایمیل در سیستم
+            raise ValidationError(" این ایمیل در سیستم ثبت نشده است لطفا بادقت ایمیل را وارد کنید")
         if not email:
             raise ValidationError("لطفاً ایمیل خود را وارد کنید.")
-        
-        if not self.get_users(email):
-            raise ValidationError("این ایمیل در سیستم ثبت نشده است.")
         return email
 
 class CustomSetPasswordForm(SetPasswordForm):
@@ -44,7 +43,7 @@ class CustomSetPasswordForm(SetPasswordForm):
         return cleaned_data
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField(required=False)
+    email = forms.EmailField(required=True)
     phone = forms.CharField(
         max_length=11,
         min_length=11,
@@ -85,15 +84,10 @@ class SignUpForm(UserCreationForm):
         return password
     
     password2 = None
-    
     class Meta:
         model = User
-        fields = ('username', 'phone', 'password1')
+        fields = ('username','email', 'phone', 'password1')
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
-            'password1': forms.PasswordInput(attrs={'class': 'form-control'}),
-        }
-        labels = {
-            'username': 'نام کاربری',
-            'password1': 'رمز عبور',
+            'username': forms.TextInput(attrs={'class': 'form-control','placeholder': 'نام کاربری را وارد کنید'}),
+            'password1': forms.PasswordInput(attrs={'class': 'form-control','placeholder':'رمز را وارد کنید'}),
         }

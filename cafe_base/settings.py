@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 from decouple import config
+
 # Build paths
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,15 +22,15 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'cafe_app1',
     'accounts',
+    'user_dashboard',
 ]
 
 # Authentication
 AUTH_USER_MODEL = 'accounts.User'
-# AUTHENTICATION_BACKENDS = [
-#     'axes.backends.AxesStandaloneBackend ',
-#     'django.contrib.auth.backends.ModelBackend',
-    
-# ]
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',  # Updated for django-axes 5.0+
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # Middleware
 MIDDLEWARE = [
@@ -130,15 +131,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Defaults
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/admin/'
+LOGIN_URL = 'login'  # Added for proper redirects
 
+# Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_USE_TLS = True
-EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST = config('EMAIL_HOST', default='smtp.gmail.com')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
+EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = config('EMAIL_HOST_USER')
 
-
+# Security (for production)
 if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
@@ -146,4 +150,3 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-

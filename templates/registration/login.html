@@ -9,7 +9,14 @@
 </head>
 <body>
 <div id="main_wrapper">
-    
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <form action="#" method="post" style="font-family: Simplified Arabic; font-weight: bold; font-size: larger " >
         {% csrf_token %}
         <label for="user_name">نام و نام خانوادگی</label>
@@ -19,7 +26,7 @@
         <button type="submit" class="btn" >ورود به حساب</button>
 
         <a href="{% url 'password_reset' %}">آیا رمز خود را فراموش کرده اید؟</a>
-
+        
         {% comment %} <a href="{% url 'password_change_done' %}">password_change_done</a>
         <a href="{% url 'password_reset' %}">password_reset</a>
         <a href="{% url 'password_reset_done' %}">password_reset_done</a>

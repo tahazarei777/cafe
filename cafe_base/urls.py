@@ -8,6 +8,7 @@ from accounts.views import CustomPasswordResetView, CustomPasswordResetConfirmVi
 urlpatterns = [
     path('',include('cafe_app1.urls')),
     path(" ",include('django.contrib.auth.urls')),
+    path("profile/", include('user_dashboard.urls')),
     path('admin/', admin.site.urls),
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),

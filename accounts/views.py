@@ -11,7 +11,7 @@ class CustomPasswordResetView(PasswordResetView):
     form_class = CustomPasswordResetForm
     template_name = 'registration/password_reset_form.html'
     email_template_name = 'registration/password_reset_email.html'
-
+    
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
     form_class = CustomSetPasswordForm
     template_name = 'registration/password_reset_confirm.html'
@@ -24,13 +24,13 @@ def signup(request):
         if form.is_valid():
             def save(self, commit=True):
                 user = super().save(commit=False)
+                user.email = form.cleaned_data['email']  # این خط را اضافه کنید
                 user.set_password(self.cleaned_data["password1"])
                 if commit:
                     user.save()
                 return user
             user = form.save()
-            login(request, user) 
-            messages.success(request, 'ثبت نام شما با موفقیت انجام شد!') # کاربر را لاگین کن
+            login(request, user,backend='django.contrib.auth.backends.ModelBackend')
             return redirect('home')  # به صفحه اصلی برو
     else:
         form = SignUpForm()
@@ -52,7 +52,6 @@ def user_login(request):
                     return redirect('home')  # کاربران عادی به صفحه اصلی
     else:
         form = AuthenticationForm()
-        messages.error(request, 'نام کاربری یا رمز عبور اشتباه است!')
     return render(request, 'registration/login.html', {'form': form})
 
 

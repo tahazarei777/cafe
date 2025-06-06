@@ -10,15 +10,13 @@
 <body>
     <div id="main_wrapper">
         {% if messages %}
-        <div class="messages">
+             <ul class="messages">
             {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
+                <li class="{{ message.tags }}">{{ message }}</li>
             {% endfor %}
-        </div>
+            </ul>
         {% endif %}
+
         <form action="#" method="POST" novalidate>
             {% csrf_token %}
 
