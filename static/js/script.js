@@ -77,3 +77,47 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 });
+
+
+document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const productId = this.dataset.productId;
+
+    fetch('/add-to-cart/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-CSRFToken': getCookie('csrftoken')  // توکن CSRF رو بخونیم
+      },
+      body: `product_id=${productId}`
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert('✅ محصول با موفقیت افزوده شد');
+      } else {
+        alert('❌ خطا در افزودن محصول');
+      }
+    })
+    .catch(err => {
+      alert('⛔ مشکلی پیش آمد');
+      console.error(err);
+    });
+  });
+});
+
+// تابع کمکی برای گرفتن csrf توکن از کوکی
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    let cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === name + '=') {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}

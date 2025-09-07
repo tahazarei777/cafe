@@ -1,3 +1,4 @@
+{% block content %}
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -58,10 +59,9 @@
                     {% endfor %}
                 </div>
             {% endif %}
-
+            <span>حساب کاربری داری ! <a href="{% url 'login' %}"> ورود</a> کن</span>
             <button type="submit">ثبت‌نام</button> 
         </form>
     </div>
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
-</html>
+{% endblock content %}

@@ -1,11 +1,19 @@
-
 from django.contrib import admin
 from django.urls import path,include
 from . import settings
 from django.conf.urls.static import static
 from accounts import views
 from accounts.views import CustomPasswordResetView, CustomPasswordResetConfirmView
+from django.contrib.admin.views.decorators import staff_member_required
+from django.shortcuts import render
+
+
+@staff_member_required
+def custom_admin_view(request):
+    return render(request, 'Admin.html')
+
 urlpatterns = [
+    path('admin/custom-page/', custom_admin_view, name='custom_admin_page'),
     path('',include('cafe_app1.urls')),
     path(" ",include('django.contrib.auth.urls')),
     path("profile/", include('user_dashboard.urls')),
@@ -16,4 +24,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('password-reset/', CustomPasswordResetView.as_view(), name='password_reset'),
     path('password-reset-confirm/<uidb64>/<token>/',CustomPasswordResetConfirmView.as_view(),name='password_reset_confirm'),
+
 ]+static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

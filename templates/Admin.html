@@ -1,0 +1,42 @@
+
+{% block content %}
+
+
+{% load static %}
+  <main>
+      <section class="orders">
+        <div class="card-orders">
+          {% for order in orders %}
+            <div class="card-order">
+              <article class="order-info">
+                <button class="delete-btn" data-order-id="{{ order.id }}">❌ حذف سفارش</button>
+                <a href="#">
+                  <img src="{% static 'images/user.png' %}" alt="user icon" />
+                  <h1>{{ order.user.username }} <span>{{ order.user.phone }}</span></h1>
+                </a>
+
+                <ul>
+                  {% for item in order.items.all %}
+                    <li>{{ item.quantity }} عدد {{ item.product.name }}</li>
+                  {% endfor %}
+                </ul>
+
+                <a href="https://www.google.com/maps/dir/?api=1&destination={{ order.user.latitude }},{{ order.user.longitude }}"
+                   target="_blank">
+                  مسیر در Google Maps 📍
+                </a>
+              </article>
+
+              <article class="order-location">
+                <iframe
+                  src="https://maps.google.com/maps?q={{ order.user.latitude }},{{ order.user.longitude }}&z=15&output=embed"
+                  style="border:0;" allowfullscreen loading="lazy">
+                </iframe>
+              </article>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    </main>
+    <script src="{% static 'js/Admin.js' %}"></script>
+{% endblock content %}

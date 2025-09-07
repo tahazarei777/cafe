@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}
+{% load humanize %}
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>cafe sade</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/brands.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/solid.css' %}" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar">
+      <article class="nav-logo">
+        <img src="{% static 'image/logo/logo.png' %}" alt="cafe logo" />
+      </article>
+
+      <ul class="nav-lists">
+        <i class="fa-solid fa-mug-hot"></i>
+        <li class="list-item"><a href="{% url "home" %}">صفحه اصلی</a></li>
+        <li class="list-item"><a href="#">منو</a></li>
+        <li class="list-item"><a href="#">گالری تصاویر</a></li>
+        <li class="list-item"><a href="#">ارتباط با ما</a></li>
+        <li class="list-item"><a href="#">درباره ما</a></li>
+      </ul>
+      
+      {% if user.is_authenticated %}
+        <article class="nav-icons">
+        <a href="{% url 'profile' %}"><i class="fa-solid fa-bag-shopping"></i></a>
+        <a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
+      </article>
+      {% else %}
+      <article class="nav-icons">
+        <a href="{% url 'profile' %}"><i class="fa-solid fa-bag-shopping"></i></a>
+        <a href="{% url 'login' %}"><i class="fa-solid fa-user"></i></a>
+      </article>
+      {% endif %}
+    </nav>
+    {% block content %}
+      
+    {% endblock content %}
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="icon-top footer-icon">
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <article class="footer-head">
+          <article class="footer-h-text">
+            <strong>
+              <span><i class="fa-duotone fa-solid fa-location-dot"></i></span>
+              کـاشان-بلوار امیرالمومنین،روبـروی ذوالفـقار چهـل و یـکم
+            </strong>
+            <div>
+              <a href="#">
+                <span><i class="fa-solid fa-phone"></i></span>
+                031-55344959
+              </a>
+              <a href="./index.html">
+                <span><i class="fa-solid fa-camera"></i></span>
+                saade_cafe
+              </a>
+            </div>
+          </article>
+          <article class="footer-h-logo">
+            <img src="{% static 'image/logo/logo.png' %}" alt="site logo" />
+            <img src="{% static 'image/footer/E-namad.png' %}" alt="E-namad logo" />
+            <img src="{% static 'image/footer/zarin.png' %}" alt="" />
+          </article>
+        </article>
+        <article class="footer-body">
+          <article class="footer-link">
+            <h6>خــدمــات مــشــتــریــان</h6>
+            <a href="#">ســــوالات مــــتــــداول</a>
+            <a href="#">قــوانــیــن و مــقــررات</a>
+            <a href="#">نــحـوه ثـبـت سـفـارش</a>
+          </article>
+          <article class="footer-link">
+            <h6>بـــــــا کـــــافـــــــه ســــــــاده</h6>
+            <a href="#">دربــــــــــاره مـــــــــــــــــــا</a>
+            <a href="#">تصاویـر کـافه ســــــــاده</a>
+            <a href="#">فـرصـت هــــــای شـغـلـی</a>
+          </article>
+          <article class="footer-link">
+            <h6>مـــــــــــــحـــــــــــصــــــــولات</h6>
+            <a href="#">قــــهـــوه هــای دمـــــی</a>
+            <a href="#">لاتــــــه دارچـــــیــــنــــــی</a>
+            <a href="#">شـــــیـــــک نــــــوتــــــــلا</a>
+          </article>
+          <article class="footer-link">
+            <h6>لـــیـــنــک هـــای مـفـــیــد</h6>
+            <a href="#">صــــفــــحــــه اصـــلــــی </a>
+            <a href="#">مــــنـــو مـــحـــصـــولات </a>
+            <a href="#">حـــســـــاب کـــاربـــــری</a>
+          </article>
+        </article>
+        <article class="contact">
+          <h6>
+            از تـــخـــفـــیـــفـــات و اخــبــار ســاده بــا خــبــر شــویــد
+          </h6>
+          <form action="#">
+            <input type="text" placeholder="آدرس ایمیل | شماره تلفن شما" />
+            <button type="button">ارسال</button>
+          </form>
+        </article>
+      </div>
+      <div class="copyright">
+        <h6>
+          کلیه حقوق مادی و معنوی این وبسایت متعلق به
+          <span>کافه ساده</span> است
+        </h6>
+        <a href="#">Design By : amirali.designs | 2025</a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+
+{% extends "admin/base_site.html" %}
+{% block branding %}
+  <h1 id="site-name">
+    <a href="{% url 'admin:index' %}">پنل مدیریت کافه ساده ☕️</a>
+  </h1>
+
+  <!-- 🔗 لینک سفارشی داخل هدر -->
+  <a href="{% url 'orders_admin_view' %}" class="custom-header-link" target="_blank">
+    🔘 سفارش‌های کاربران
+  </a>
+{% endblock %}

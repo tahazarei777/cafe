@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 class CustomPasswordResetForm(PasswordResetForm):
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        if not User.objects.filter(email=email).exists():  # بررسی وجود ایمیل در سیستم
+        if not User.objects.filter(email=email).exists():  
             raise ValidationError(" این ایمیل در سیستم ثبت نشده است لطفا بادقت ایمیل را وارد کنید")
         if not email:
             raise ValidationError("لطفاً ایمیل خود را وارد کنید.")

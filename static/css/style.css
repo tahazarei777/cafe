@@ -165,27 +165,27 @@ h3 {
 
 @font-face {
   font-family: peyda;
-  src: url(../font/Peyda/Peyda-Thin.ttf) ;
+  src: url(./font/Peyda/Peyda-Thin.ttf);
 }
 
 @font-face {
   font-family: peyda light;
-  src: url(../font/Peyda/peyda-light.ttf);
+  src: url(./font/Peyda/peyda-light.ttf);
 }
 
 @font-face {
   font-family: peyda md;
-  src: url(../font/Peyda/Peyda-Medium.ttf);
+  src: url(./font/Peyda/Peyda-Medium.ttf);
 }
 
 @font-face {
   font-family: peyda bd;
-  src: url(../font/Peyda/Peyda-Bold.ttf);
+  src: url(./font/Peyda/Peyda-Bold.ttf);
 }
 
 @font-face {
   font-family: peyda bk;
-  src: url(../font/Peyda/Peyda-Black.ttf);
+  src: url(./font/Peyda/Peyda-Black.ttf);
 }
 
 /* 
@@ -580,6 +580,7 @@ h3 {
   .header-text h1 {
     font-size: 37px;
     font-weight: 900;
+    font-family: var(--ff-fourth);
   }
 
   .header-text h1::before {

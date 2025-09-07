@@ -20,9 +20,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django_google_maps',
     'cafe_app1',
     'accounts',
     'user_dashboard',
+    'Products'
 ]
 
 # Authentication
@@ -141,8 +143,10 @@ EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = config('EMAIL_HOST_USER')
+GOOGLE_MAPS_API_KEY = config('GOOGLE_MAPS_API_KEY')
+# NOMINATIM_USER_AGENT = "DeliveryApp/1.0 (zarei@pythonanywhere.com)"
+# NOMINATIM_RATE_LIMIT = True
 
-# Security (for production)
 if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True

@@ -15,3 +15,9 @@ class list_products(View):
 
 class home(TemplateView):
     template_name = "index.html"
+
+def orders_admin_view(request):
+    return render(request, 'Admin.html', {})
+
+
+

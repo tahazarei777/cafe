@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import edit_profile, redirect_to_login
+from .views import edit_profile
 
 urlpatterns = [
-    path('edit/', edit_profile, name='edit_profile'),
-    path('login_required/', redirect_to_login, name='login_required'),
+    path(' ', edit_profile, name='profile'),
 ]

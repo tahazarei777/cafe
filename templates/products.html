@@ -2,7 +2,7 @@
 {% for category in categorys %}
     {% if category.name == category_name %}
         {% for product in category.products.all %}
-            <a href="#" class="product-card">
+            <a class="product-card">
               <figure class="product-card-img">
                 <img src="{{ product.img.url }}"alt="{{ product.name }}"/>
               </figure>
@@ -10,11 +10,10 @@
                 <h4>{{ product.name }}</h4>
                 <div>
                   <strong>{{product.price|intcomma}} تومان</strong>
-                  <button>افزودن به سبد خرید</button>
+                  <button class="add-to-cart-btn" data-product-id="{{ product.id }}">افزودن به سبد خرید</button>
                 </div>
               </article>
             </a>
         {% endfor %}
     {% endif %}
 {% endfor %}
-    

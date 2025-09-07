@@ -1,0 +1,208 @@
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: white;
+            color: white;
+            line-height: 1.6;
+            margin:0;
+            padding: 0;
+        }
+
+        .profile-container {
+            max-width: 700px;
+            margin: 40px auto;
+            margin-bottom: 90px;
+            padding: 30px;
+            background: #87553C;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+            font-size: 28px;
+            font-weight: 600;
+            border-bottom: 2px solid #A18157;
+            padding-bottom: 15px;
+        }
+
+        /* فرم‌های ورودی */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: #A18157;
+            border: 1px solid #ffffff;
+            border-radius: 6px;
+            font-size: 16px;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #fff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(68, 45, 45, 0.5);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.39);
+        }
+
+        /* تصویر پروفایل و آپلود */
+        /* استایل بخش تصویر پروفایل */
+        .profile-image-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .profile-image-preview {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid gray;
+            transition: all 0.3s;
+        }
+
+        .profile-image-preview:hover {
+            transform: scale(1.05);
+            border-color: white;
+        }
+
+        /* دکمه آپلود سفارشی */
+        .custom-upload-btn {
+            position: relative;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .upload-btn {
+            background: rgb(68, 46, 46);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .upload-btn:hover {
+            background: rgba(68, 46, 46, 0.85);
+            transform: translateY(-1px);
+        }
+
+        .upload-btn i {
+            margin-left: 8px;
+        }
+
+        #id_profile_image {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .upload-btn[style*="background: red"] {
+            margin-top: 10px;
+        }
+
+        /* دکمه ذخیره */
+        .submit-btn {
+            background: rgb(68, 46, 46);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: rgba(68, 46, 46, 0.767);
+            transform: translateY(-2px);
+        }
+
+        /* toast پیام‌ها */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: green;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            margin-left: 10px;
+        }
+
+        .toast.error {
+            background: red;
+        }
+
+        /* واکنش‌گرا */
+        @media (max-width: 768px) {
+            .profile-container {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .profile-header {
+                font-size: 24px;
+            }
+
+            .profile-image-preview {
+                width: 140px;
+                height: 140px;
+            }
+
+            .upload-btn {
+                font-size: 13px;
+                padding: 8px 16px;
+            }
+
+            .submit-btn {
+                font-size: 16px;
+                padding: 12px;
+            }
+        }
