@@ -30,7 +30,7 @@ INSTALLED_APPS = [
 # Authentication
 AUTH_USER_MODEL = 'accounts.User'
 AUTHENTICATION_BACKENDS = [
-    'axes.backends.AxesStandaloneBackend',  # Updated for django-axes 5.0+
+    'axes.backends.AxesStandaloneBackend',  
     'django.contrib.auth.backends.ModelBackend',
 ]
 
@@ -109,8 +109,8 @@ CACHES = {
 }
 
 AXES_CACHE = 'axes_cache'
-AXES_FAILURE_LIMIT = 5
-AXES_COOLOFF_TIME = 1  # Hours
+AXES_FAILURE_LIMIT = 4
+AXES_COOLOFF_TIME = 0.05 # Hours
 AXES_LOCKOUT_PARAMETERS = [["ip_address", "user_agent", "username"]]
 AXES_RESET_ON_SUCCESS = True
 AXES_LOCKOUT_TEMPLATE = 'lockout.html'
