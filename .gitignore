@@ -1,7 +1,7 @@
 # محیط مجازی پایتون
-venv/
-myenv/
 env/
+myenv/
+env
 
 # فایلهای پایگاهداده
 *.sqlite3
