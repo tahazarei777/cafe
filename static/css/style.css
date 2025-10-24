@@ -150,8 +150,8 @@ h3 {
   --ff-third: "peyda md";
   --ff-fourth: "peyda bd";
   --ff-fifth: "peyda bk";
-  --clr-primary: #A18157;
-  --clr-secondary: #87553C;
+  --clr-primary: #a18157;
+  --clr-secondary: #87553c;
   --clr-green-primary: #2bac88;
   --clr-green-secondary: #29ab87;
   --clr-green-third: #7fc89c;
@@ -580,7 +580,6 @@ h3 {
   .header-text h1 {
     font-size: 37px;
     font-weight: 900;
-    font-family: var(--ff-fourth);
   }
 
   .header-text h1::before {
@@ -1107,11 +1106,11 @@ h3 {
 
 .product-card {
   background: #fff;
-  border-radius: 17px;
-  -webkit-border-radius: 17px;
-  -moz-border-radius: 17px;
-  -ms-border-radius: 17px;
-  -o-border-radius: 17px;
+  border-radius: 14px;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  -ms-border-radius: 14px;
+  -o-border-radius: 14px;
   min-width: 95px;
   flex: 0 0 calc(25% - 5px);
   padding: 10px 5px;
@@ -1120,12 +1119,20 @@ h3 {
 
 .product-card-img {
   width: 100%;
-  height: fit-content;
+  height: 100%;
+  padding: 0 2px 4px 2px;
 }
 
 .product-card-img img {
   width: 100%;
   height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .product-card-info {
@@ -1157,7 +1164,11 @@ h3 {
   font-family: var(--ff-third);
   font-size: 4px;
   border: none;
-  background: linear-gradient(to right, var(--clr-primary) 50%, var(--clr-secondary) 100%);
+  background: linear-gradient(
+    to right,
+    var(--clr-primary) 50%,
+    var(--clr-secondary) 100%
+  );
   border-radius: 2px;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -1173,6 +1184,14 @@ h3 {
   .product-card {
     flex: 0 0 calc(16.75% - 5px);
   }
+
+  .product-card-img img {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
 
   .product-card-info {
     gap: 8px;
@@ -1206,6 +1225,10 @@ h3 {
     gap: 10px;
   }
 
+  .product-card-img {
+    padding: 0 3px 4px 3px;
+  }
+
   .product-card {
     padding: 14px 6px;
     flex: 0 0 calc(16.75% - 10px);
@@ -1237,11 +1260,12 @@ h3 {
 @media screen and (min-width: 1400px) {
   .product-cards {
     gap: 16px;
+
   }
 
   .product-card {
     padding: 16px 8px;
-    flex: 0 0 calc(18% - 10px);
+    flex: 0 0 calc(16% - 10px);
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -1249,12 +1273,24 @@ h3 {
     -o-border-radius: 20px;
   }
 
+  .product-card-img {
+    padding: 0 6px 9px 6px;
+  }
+
+  .product-card-img img {
+    border-radius: 14px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    -ms-border-radius: 14px;
+    -o-border-radius: 14px;
+}
+
   .product-card-info h4 {
     font-size: 18px;
   }
 
   .product-card-info div strong {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .product-card-info div button {
@@ -1264,33 +1300,13 @@ h3 {
 
   .fa-caret-left {
     top: calc(50% + 30px);
-    left: -20px;
-    font-size: 30px;
-  }
-
-  .fa-caret-right {
-    top: calc(50% + 30px);
-
-    right: -20px;
-    font-size: 30px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .product-card {
-    flex: 0 0 calc(16.75% - 15px);
-  }
-
-  .product-card-info div strong {
-    font-size: 15px;
-  }
-
-  .fa-caret-left {
     left: -18px;
     font-size: 34px;
   }
 
   .fa-caret-right {
+    top: calc(50% + 30px);
+
     right: -18px;
     font-size: 34px;
   }
@@ -1303,13 +1319,20 @@ h3 {
 
   .product-card {
     padding: 20px 10px;
-    flex: 0 0 calc(16.75% - 15px);
     border-radius: 24px;
     -webkit-border-radius: 24px;
     -moz-border-radius: 24px;
     -ms-border-radius: 24px;
     -o-border-radius: 24px;
   }
+
+  .product-card-img img {
+    border-radius: 18px;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    -ms-border-radius: 18px;
+    -o-border-radius: 18px;
+}
 
   .product-card-info {
     gap: 10px;
